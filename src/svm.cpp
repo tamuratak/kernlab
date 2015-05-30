@@ -3017,7 +3017,7 @@ public:
 		int start;
 		if((start = cache->get_data(i,&data,len)) < len)
 		{
-#pragma omp parallel for private(j)
+#pragma omp parallel for
 			for(int j=start;j<len;j++)
 				data[j] = (Qfloat)y[i]*y[j]*((this->*kernel_function)(i,j) + 1);
 		}
@@ -3067,7 +3067,7 @@ public:
 		int start;
 		if((start = cache->get_data(i,&data,len)) < len)
 		{
-#pragma omp parallel for private(j)
+#pragma omp parallel for
 			for(int j=start;j<len;j++)
 				data[j] = (Qfloat)(this->*kernel_function)(i,j) + 1;
 		}
@@ -3134,7 +3134,7 @@ public:
 		int real_i = index[i];
 		if(cache->get_data(real_i,&data,l) < l)
 		{
-#pragma omp parallel for private(j)
+#pragma omp parallel for
 			for(int j=0;j<l;j++)
 				data[j] = (Qfloat)(this->*kernel_function)(real_i,j) + 1;
 		}
@@ -3199,7 +3199,7 @@ public:
 		int start;
 		if((start = cache->get_data(i,&data,len)) < len)
 		{
-#pragma omp parallel for private(j)
+#pragma omp parallel for
 			for(int j=start;j<len;j++)
 				data[j] = (Qfloat)(y[i]*y[j]*(this->*kernel_function)(i,j));
 		}
@@ -3249,7 +3249,7 @@ public:
 		int start;
 		if((start = cache->get_data(i,&data,len)) < len)
 		{
-#pragma omp parallel for private(j)
+#pragma omp parallel for
 			for(int j=start;j<len;j++)
 				data[j] = (Qfloat)(this->*kernel_function)(i,j);
 		}
@@ -3316,7 +3316,7 @@ public:
 		int real_i = index[i];
 		if(cache->get_data(real_i,&data,l) < l)
 		{
-#pragma omp parallel for private(j)
+#pragma omp parallel for
 			for(int j=0;j<l;j++)
 				data[j] = (Qfloat)(this->*kernel_function)(real_i,j);
 		}
